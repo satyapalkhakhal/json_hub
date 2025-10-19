@@ -1,0 +1,30 @@
+{
+  "name": "JSON Formatter Tool",
+  "version": "1.0.0",
+  "features": [
+    "JSON Formatting",
+    "JSON Validation",
+    "Tree View",
+    "Convert to XML/CSV/YAML",
+    "File Upload/Download",
+    "Load from URL"
+  ],
+  "technologies": {
+    "frontend": "React",
+    "styling": "TailwindCSS",
+    "icons": "Lucide React",
+    "buildTool": "Vite"
+  },
+  "metadata": {
+    "author": "Developer",
+    "license": "MIT",
+    "imageUrl": "https://via.placeholder.com/150",
+    "websiteUrl": "https://jsonformatter.org"
+  },
+  "stats": {
+    "downloads": 1000,
+    "stars": 50,
+    "isActive": true,
+    "rating": 4.5
+  }
+}
