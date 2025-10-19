@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { Braces } from 'lucide-react'
 import Home from './pages/Home'
+import Compare from './pages/Compare'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import Terms from './pages/Terms'
 import About from './pages/About'
@@ -26,6 +27,7 @@ function App() {
               </Link>
               <div className="flex items-center space-x-4">
                 <nav className="hidden md:flex space-x-4">
+                  <Link to="/compare" className="text-gray-700 hover:text-indigo-600 transition font-medium">Compare</Link>
                   <Link to="/about" className="text-gray-700 hover:text-indigo-600 transition">About</Link>
                   <Link to="/contact" className="text-gray-700 hover:text-indigo-600 transition">Contact</Link>
                 </nav>
@@ -48,6 +50,7 @@ function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home autoUpdate={autoUpdate} />} />
+            <Route path="/compare" element={<Compare />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/about" element={<About />} />
@@ -74,8 +77,8 @@ function App() {
                 <ul className="space-y-2 text-sm">
                   <li><Link to="/" className="text-gray-600 hover:text-indigo-600 transition">JSON Formatter</Link></li>
                   <li><Link to="/" className="text-gray-600 hover:text-indigo-600 transition">JSON Validator</Link></li>
-                  <li><Link to="/" className="text-gray-600 hover:text-indigo-600 transition">JSON to XML</Link></li>
-                  <li><Link to="/" className="text-gray-600 hover:text-indigo-600 transition">JSON to CSV</Link></li>
+                  <li><Link to="/compare" className="text-gray-600 hover:text-indigo-600 transition">JSON Compare</Link></li>
+                  <li><Link to="/" className="text-gray-600 hover:text-indigo-600 transition">JSON to XML/CSV/YAML</Link></li>
                 </ul>
               </div>
               
