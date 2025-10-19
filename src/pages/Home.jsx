@@ -15,6 +15,7 @@ import {
   Wrench
 } from 'lucide-react'
 import JsonViewer from '../components/JsonViewer'
+import AdBanner from '../components/AdBanner'
 import { formatJSON, validateJSON, fixJSON } from '../utils/jsonUtils'
 import { jsonToXml, jsonToCsv, jsonToYaml } from '../utils/converters'
 
@@ -393,6 +394,9 @@ function Home({ autoUpdate = true }) {
           </div>
         </div>
       </div>
+
+      {/* Ad Banner - Between content and features */}
+      <AdBanner />
 
       {/* Features Info */}
       <div className="mt-8 bg-white rounded-lg shadow-md p-6">

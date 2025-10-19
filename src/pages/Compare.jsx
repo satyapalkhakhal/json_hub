@@ -12,6 +12,7 @@ import {
 } from 'lucide-react'
 import { compareJSON, getLineDiff, formatDifferences, getDiffStats } from '../utils/diffUtils'
 import { Helmet } from 'react-helmet-async'
+import AdBanner from '../components/AdBanner'
 
 function Compare() {
   const [leftInput, setLeftInput] = useState('')
@@ -285,6 +286,9 @@ function Compare() {
             <p className="text-green-600 text-sm mt-1">No differences found between the two JSON objects.</p>
           </div>
         )}
+
+        {/* Ad Banner - Between content and features */}
+        <AdBanner />
 
         {/* Features Info */}
         <div className="mt-8 bg-white rounded-lg shadow-md p-6">

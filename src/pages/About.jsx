@@ -1,5 +1,6 @@
 import { ArrowLeft, Check, Braces, Code, Database, FileText } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import AdBanner from '../components/AdBanner'
 
 const About = () => {
   return (
@@ -159,6 +160,9 @@ const About = () => {
                 <li>An ordered list of values (arrays)</li>
               </ul>
             </section>
+
+            {/* Ad Banner - Mid-content */}
+            <AdBanner />
 
             <section>
               <h2 className="text-2xl font-semibold text-gray-800 mb-3">Who Uses This Tool?</h2>
