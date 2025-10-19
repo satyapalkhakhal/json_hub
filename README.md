@@ -128,6 +128,46 @@ The production-ready files will be in the `dist` directory.
 npm run preview
 ```
 
+## Deploy to Vercel
+
+### Option 1: Deploy via Vercel Dashboard
+1. Push your code to GitHub (if not already done)
+2. Go to [Vercel](https://vercel.com)
+3. Click "Import Project"
+4. Select your GitHub repository
+5. Vercel will auto-detect Vite and deploy
+6. Your site will be live at `your-project-name.vercel.app`
+
+### Option 2: Deploy via Vercel CLI
+```bash
+# Install Vercel CLI globally
+npm install -g vercel
+
+# Deploy
+vercel
+
+# Deploy to production
+vercel --prod
+```
+
+## Google AdSense Integration
+
+The Google AdSense code is already integrated in `index.html`. To complete the setup:
+
+1. **Deploy your site** to Vercel or your preferred hosting
+2. **Apply for AdSense** at [https://www.google.com/adsense](https://www.google.com/adsense)
+3. **Add your site URL** (e.g., `your-app.vercel.app`)
+4. **Wait for approval** (typically 1-2 weeks)
+5. Once approved, ads will automatically appear on your site
+
+### Required Pages for AdSense
+✅ Privacy Policy - `/privacy`  
+✅ Terms of Service - `/terms`  
+✅ About - `/about`  
+✅ Contact - `/contact`
+
+All required pages are included and accessible via the footer navigation.
+
 ## Project Structure
 
 ```
@@ -135,14 +175,21 @@ JSON-Tool/
 ├── src/
 │   ├── components/
 │   │   └── JsonViewer.jsx      # Tree view component
+│   ├── pages/
+│   │   ├── Home.jsx            # Main JSON tool page
+│   │   ├── About.jsx           # About page
+│   │   ├── Contact.jsx         # Contact page
+│   │   ├── PrivacyPolicy.jsx   # Privacy policy (required for AdSense)
+│   │   └── Terms.jsx           # Terms of service
 │   ├── utils/
 │   │   ├── jsonUtils.js        # JSON operations
 │   │   └── converters.js       # Conversion utilities
-│   ├── App.jsx                 # Main application
+│   ├── App.jsx                 # Main application with routing
 │   ├── main.jsx                # Entry point
 │   └── index.css               # Global styles
 ├── public/                     # Static assets
-├── index.html                  # HTML template
+├── index.html                  # HTML template with AdSense code
+├── vercel.json                 # Vercel deployment config
 ├── package.json                # Dependencies
 ├── vite.config.js             # Vite configuration
 ├── tailwind.config.js         # Tailwind configuration
