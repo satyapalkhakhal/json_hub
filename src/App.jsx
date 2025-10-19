@@ -13,7 +13,8 @@ import {
   Database,
   Link2,
   Play,
-  Wrench
+  Wrench,
+  Braces
 } from 'lucide-react'
 import JsonViewer from './components/JsonViewer'
 import { formatJSON, validateJSON, fixJSON } from './utils/jsonUtils'
@@ -179,7 +180,7 @@ function App() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <FileJson className="w-8 h-8 text-indigo-600" />
+              <Braces className="w-8 h-8 text-indigo-600" />
               <div>
                 <h1 className="text-2xl font-bold text-gray-800">JSON Formatter & Validator</h1>
                 <p className="text-sm text-gray-600">Format, Validate, and Convert JSON Online</p>
