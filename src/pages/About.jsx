@@ -185,13 +185,69 @@ const About = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-gray-800 mb-3">Feedback & Support</h2>
-              <p>
-                We're constantly working to improve our tool. If you have suggestions, feature requests, 
-                or encounter any issues, please reach out through our{' '}
-                <Link to="/contact" className="text-indigo-600 hover:underline">Contact page</Link>. 
-                Your feedback helps us make this tool better for everyone.
+              <h2 className="text-2xl font-semibold text-gray-800 mb-3">JSON Examples and Tutorials</h2>
+              <p className="mb-4">
+                To help you get started with JSON, here are some practical examples and quick tutorials. JSON is versatile and used in APIs, configuration files, and data storage.
               </p>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Basic JSON Structure</h3>
+              <p className="mb-2">A simple JSON object representing a person:</p>
+              <pre className="bg-gray-100 p-4 rounded-lg text-sm overflow-auto">
+{`{
+  "name": "John Doe",
+  "age": 30,
+  "city": "New York",
+  "hobbies": ["reading", "coding", "hiking"]
+}`}
+              </pre>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-2 mt-4">Nested JSON Example</h3>
+              <p className="mb-2">JSON can contain nested objects for more complex data:</p>
+              <pre className="bg-gray-100 p-4 rounded-lg text-sm overflow-auto">
+{`{
+  "user": {
+    "profile": {
+      "username": "johndoe",
+      "email": "john@example.com"
+    },
+    "preferences": {
+      "theme": "dark",
+      "notifications": true
+    }
+  }
+}`}
+              </pre>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-2 mt-4">JSON Array Example</h3>
+              <p className="mb-2">Arrays are used for lists of data:</p>
+              <pre className="bg-gray-100 p-4 rounded-lg text-sm overflow-auto">
+{`{
+  "products": [
+    {"id": 1, "name": "Laptop", "price": 999.99},
+    {"id": 2, "name": "Mouse", "price": 25.50}
+  ]
+}`}
+              </pre>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-2 mt-4">Quick Tutorial: Validating JSON</h3>
+              <p className="mb-2">
+                Always ensure your JSON is valid before using it. Common issues include missing commas, incorrect brackets, or invalid strings.
+                Our tool helps by providing real-time validation and error messages.
+              </p>
+              <ul className="list-disc list-inside ml-4 space-y-1">
+                <li>Use double quotes for all strings.</li>
+                <li>Separate key-value pairs with commas.</li>
+                <li>Ensure brackets and braces are properly closed.</li>
+                <li>Test with our validator to catch errors early.</li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-2 mt-4">Best Practices for JSON</h3>
+              <ul className="list-disc list-inside ml-4 space-y-1">
+                <li><strong>Consistency:</strong> Use consistent indentation (2-4 spaces) for readability.</li>
+                <li><strong>Keys:</strong> Use descriptive, camelCase keys for clarity.</li>
+                <li><strong>Validation:</strong> Always validate JSON before production use.</li>
+                <li><strong>Size:</strong> For large datasets, consider pagination or streaming.</li>
+              </ul>
             </section>
           </div>
         </div>
