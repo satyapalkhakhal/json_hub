@@ -12,11 +12,12 @@ import {
   FileText,
   Database,
   Link2,
-  Wrench
+  Wrench,
+  Minimize2
 } from 'lucide-react'
 import JsonViewer from '../components/JsonViewer'
 import AdBanner from '../components/AdBanner'
-import { formatJSON, validateJSON, fixJSON } from '../utils/jsonUtils'
+import { formatJSON, validateJSON, fixJSON, minifyJSON } from '../utils/jsonUtils'
 import { jsonToXml, jsonToCsv, jsonToYaml } from '../utils/converters'
 
 function Home({ autoUpdate = true }) {
@@ -75,6 +76,17 @@ function Home({ autoUpdate = true }) {
     const fixed = fixJSON(input)
     setInput(fixed)
     handleFormat(fixed, indentSize)
+  }
+
+  const handleCompress = () => {
+    try {
+      const compressed = minifyJSON(input)
+      setOutput(compressed)
+      setError(null)
+      setIsValid(true)
+    } catch (err) {
+      setError(`Compress failed: ${err.message}`)
+    }
   }
 
   const handleCopy = () => {
@@ -174,7 +186,7 @@ function Home({ autoUpdate = true }) {
   return (
     <div className="container mx-auto px-4 py-6">
       {/* Toolbar */}
-      <div className="bg-white rounded-lg shadow-md p-4 mb-4">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 mb-4 transition-colors duration-200">
         <div className="flex flex-wrap gap-3">
           {/* File Upload */}
           <label className="cursor-pointer">
@@ -217,6 +229,15 @@ function Home({ autoUpdate = true }) {
             <span className="text-sm font-medium">Fix</span>
           </button>
 
+          {/* Compress Button */}
+          <button
+            onClick={handleCompress}
+            className="flex items-center space-x-2 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition"
+          >
+            <Minimize2 className="w-4 h-4" />
+            <span className="text-sm font-medium">Compress</span>
+          </button>
+
           {/* Clear Button */}
           <button
             onClick={handleClear}
@@ -245,17 +266,17 @@ function Home({ autoUpdate = true }) {
           </button>
 
           {/* Indent Size */}
-          <div className="flex items-center space-x-2 px-4 py-2 bg-gray-100 rounded-lg">
-            <Settings className="w-4 h-4 text-gray-600" />
-            <span className="text-sm text-gray-600">Indent:</span>
+          <div className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg transition-colors duration-200">
+            <Settings className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+            <span className="text-sm text-gray-600 dark:text-gray-300">Indent:</span>
             {[2, 3, 4].map(size => (
               <button
                 key={size}
                 onClick={() => handleIndentChange(size)}
-                className={`px-2 py-1 rounded text-sm ${
+                className={`px-2 py-1 rounded text-sm transition-colors ${
                   indentSize === size 
                     ? 'bg-indigo-600 text-white' 
-                    : 'bg-white text-gray-700'
+                    : 'bg-white dark:bg-gray-600 text-gray-700 dark:text-gray-200'
                 }`}
               >
                 {size}
@@ -296,7 +317,7 @@ function Home({ autoUpdate = true }) {
             value={urlInput}
             onChange={(e) => setUrlInput(e.target.value)}
             placeholder="Enter JSON URL to load..."
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition-colors duration-200"
           />
           <button
             onClick={handleLoadFromURL}
@@ -310,18 +331,18 @@ function Home({ autoUpdate = true }) {
 
       {/* Status Bar */}
       {(error || isValid) && (
-        <div className={`rounded-lg p-4 mb-4 ${error ? 'bg-red-50 border border-red-200' : 'bg-green-50 border border-green-200'}`}>
+        <div className={`rounded-lg p-4 mb-4 transition-colors duration-200 ${error ? 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800' : 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800'}`}>
           <div className="flex items-start space-x-2">
             {error ? (
-              <AlertCircle className="w-5 h-5 text-red-600 mt-0.5" />
+              <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 mt-0.5" />
             ) : (
-              <Check className="w-5 h-5 text-green-600 mt-0.5" />
+              <Check className="w-5 h-5 text-green-600 dark:text-green-400 mt-0.5" />
             )}
             <div className="flex-1">
-              <p className={`font-medium ${error ? 'text-red-800' : 'text-green-800'}`}>
+              <p className={`font-medium ${error ? 'text-red-800 dark:text-red-300' : 'text-green-800 dark:text-green-300'}`}>
                 {error ? 'Invalid JSON' : 'Valid JSON ✓'}
               </p>
-              {error && <p className="text-sm text-red-600 mt-1">{error}</p>}
+              {error && <p className="text-sm text-red-600 dark:text-red-400 mt-1">{error}</p>}
             </div>
           </div>
         </div>
@@ -330,8 +351,8 @@ function Home({ autoUpdate = true }) {
       {/* Editor Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Input */}
-        <div className="bg-white rounded-lg shadow-md overflow-hidden">
-          <div className="bg-gray-800 text-white px-4 py-3">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-colors duration-200">
+          <div className="bg-gray-800 dark:bg-gray-900 text-white px-4 py-3">
             <h2 className="font-semibold">Input JSON</h2>
           </div>
           <div className="p-4">
@@ -346,19 +367,19 @@ function Home({ autoUpdate = true }) {
         </div>
 
         {/* Output */}
-        <div className="bg-white rounded-lg shadow-md overflow-hidden">
-          <div className="bg-gray-800 text-white px-4 py-3 flex items-center justify-between">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-colors duration-200">
+          <div className="bg-gray-800 dark:bg-gray-900 text-white px-4 py-3 flex items-center justify-between">
             <h2 className="font-semibold">Output</h2>
             <div className="flex space-x-2">
               <button
                 onClick={() => setActiveTab('formatted')}
-                className={`px-3 py-1 rounded text-sm ${activeTab === 'formatted' ? 'bg-indigo-600' : 'bg-gray-700'}`}
+                className={`px-3 py-1 rounded text-sm transition-colors ${activeTab === 'formatted' ? 'bg-indigo-600' : 'bg-gray-700 hover:bg-gray-600'}`}
               >
                 Formatted
               </button>
               <button
                 onClick={() => setActiveTab('tree')}
-                className={`px-3 py-1 rounded text-sm ${activeTab === 'tree' ? 'bg-indigo-600' : 'bg-gray-700'}`}
+                className={`px-3 py-1 rounded text-sm transition-colors ${activeTab === 'tree' ? 'bg-indigo-600' : 'bg-gray-700 hover:bg-gray-600'} disabled:opacity-50 disabled:cursor-not-allowed`}
                 disabled={!isValid}
               >
                 Tree View
@@ -396,97 +417,104 @@ function Home({ autoUpdate = true }) {
       </div>
 
       {/* Features Info */}
-      <div className="mt-8 bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">Features</h2>
+      <div className="mt-8 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-colors duration-200">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-4">Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="flex items-start space-x-3">
-            <Check className="w-5 h-5 text-green-600 mt-1" />
+            <Check className="w-5 h-5 text-green-600 dark:text-green-400 mt-1" />
             <div>
-              <h3 className="font-semibold text-gray-800">JSON Validation</h3>
-              <p className="text-sm text-gray-600">Validate JSON with detailed error messages</p>
+              <h3 className="font-semibold text-gray-800 dark:text-white">JSON Validation</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Validate JSON with detailed error messages</p>
             </div>
           </div>
           <div className="flex items-start space-x-3">
-            <Check className="w-5 h-5 text-green-600 mt-1" />
+            <Check className="w-5 h-5 text-green-600 dark:text-green-400 mt-1" />
             <div>
-              <h3 className="font-semibold text-gray-800">Auto Format</h3>
-              <p className="text-sm text-gray-600">Beautify JSON with customizable indentation</p>
+              <h3 className="font-semibold text-gray-800 dark:text-white">Auto Format</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Beautify JSON with customizable indentation</p>
             </div>
           </div>
           <div className="flex items-start space-x-3">
-            <Check className="w-5 h-5 text-green-600 mt-1" />
+            <Check className="w-5 h-5 text-green-600 dark:text-green-400 mt-1" />
             <div>
-              <h3 className="font-semibold text-gray-800">Tree View</h3>
-              <p className="text-sm text-gray-600">Navigate JSON in interactive tree structure</p>
+              <h3 className="font-semibold text-gray-800 dark:text-white">Tree View</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Navigate JSON in interactive tree structure</p>
             </div>
           </div>
           <div className="flex items-start space-x-3">
-            <Check className="w-5 h-5 text-green-600 mt-1" />
+            <Check className="w-5 h-5 text-green-600 dark:text-green-400 mt-1" />
             <div>
-              <h3 className="font-semibold text-gray-800">Convert to XML/CSV/YAML</h3>
-              <p className="text-sm text-gray-600">Export JSON to multiple formats</p>
+              <h3 className="font-semibold text-gray-800 dark:text-white">Convert to XML/CSV/YAML</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Export JSON to multiple formats</p>
             </div>
           </div>
           <div className="flex items-start space-x-3">
-            <Check className="w-5 h-5 text-green-600 mt-1" />
+            <Check className="w-5 h-5 text-green-600 dark:text-green-400 mt-1" />
             <div>
-              <h3 className="font-semibold text-gray-800">Local Storage</h3>
-              <p className="text-sm text-gray-600">Auto-save your work in browser</p>
+              <h3 className="font-semibold text-gray-800 dark:text-white">Local Storage</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Auto-save your work in browser</p>
             </div>
           </div>
           <div className="flex items-start space-x-3">
-            <Check className="w-5 h-5 text-green-600 mt-1" />
+            <Check className="w-5 h-5 text-green-600 dark:text-green-400 mt-1" />
             <div>
-              <h3 className="font-semibold text-gray-800">Load from URL</h3>
-              <p className="text-sm text-gray-600">Fetch and format JSON from any URL</p>
+              <h3 className="font-semibold text-gray-800 dark:text-white">JSON Compress</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Minify JSON for production use</p>
+            </div>
+          </div>
+          <div className="flex items-start space-x-3">
+            <Check className="w-5 h-5 text-green-600 dark:text-green-400 mt-1" />
+            <div>
+              <h3 className="font-semibold text-gray-800 dark:text-white">Load from URL</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Fetch and format JSON from any URL</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* What is JSON Formatter - Educational Content */}
-      <div className="mt-8 bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">What is JSON Formatter & Validator?</h2>
-        <p className="text-gray-700 mb-4">
+      <div className="mt-8 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-colors duration-200">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">What is JSON Formatter & Validator?</h2>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
           A JSON Formatter is an essential online tool for developers, data analysts, and anyone working with JSON (JavaScript Object Notation) data. 
           Our free JSON formatter helps you beautify, validate, and convert JSON data instantly in your browser. Whether you're debugging API responses, 
           processing configuration files, or learning JSON structure, our tool provides a comprehensive solution for all your JSON needs.
         </p>
-        <p className="text-gray-700">
+        <p className="text-gray-700 dark:text-gray-300">
           JSON has become the standard data interchange format for web applications, REST APIs, and modern software development. Our formatter 
           ensures your JSON is properly structured, valid, and easy to read, making it an indispensable tool for software development workflows.
         </p>
       </div>
 
       {/* How to Use Guide */}
-      <div className="mt-8 bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">How to Use JSON Formatter - Step by Step Guide</h2>
+      <div className="mt-8 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-colors duration-200">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">How to Use JSON Formatter - Step by Step Guide</h2>
         <div className="space-y-4">
           <div className="flex items-start space-x-3">
-            <div className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
+            <div className="flex-shrink-0 w-8 h-8 bg-indigo-600 dark:bg-indigo-500 text-white rounded-full flex items-center justify-center font-bold">1</div>
             <div>
-              <h3 className="font-semibold text-gray-800 mb-1">Paste or Upload Your JSON</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-semibold text-gray-800 dark:text-white mb-1">Paste or Upload Your JSON</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Copy your JSON data and paste it into the input field, or click the Upload button to load a JSON file from your computer. 
                 You can also load JSON directly from a URL using the Load URL feature.
               </p>
             </div>
           </div>
           <div className="flex items-start space-x-3">
-            <div className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold">2</div>
+            <div className="flex-shrink-0 w-8 h-8 bg-indigo-600 dark:bg-indigo-500 text-white rounded-full flex items-center justify-center font-bold">2</div>
             <div>
-              <h3 className="font-semibold text-gray-800 mb-1">Format and Validate</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-semibold text-gray-800 dark:text-white mb-1">Format and Validate</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Click the Format button to beautify your JSON with proper indentation. The tool automatically validates your JSON and 
                 highlights any syntax errors with detailed error messages to help you fix them quickly.
               </p>
             </div>
           </div>
           <div className="flex items-start space-x-3">
-            <div className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold">3</div>
+            <div className="flex-shrink-0 w-8 h-8 bg-indigo-600 dark:bg-indigo-500 text-white rounded-full flex items-center justify-center font-bold">3</div>
             <div>
-              <h3 className="font-semibold text-gray-800 mb-1">Convert or Download</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-semibold text-gray-800 dark:text-white mb-1">Convert or Download</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Convert your JSON to XML, CSV, or YAML formats with one click. Download the formatted or converted data, 
                 or use the Copy button to quickly copy it to your clipboard for use in your projects.
               </p>
@@ -496,8 +524,8 @@ function Home({ autoUpdate = true }) {
       </div>
 
       {/* JSON Common Use Cases */}
-      <div className="mt-8 bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">Common Use Cases for JSON Formatter</h2>
+      <div className="mt-8 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-colors duration-200">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">Common Use Cases for JSON Formatter</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <h3 className="text-lg font-semibold text-gray-800 mb-2">API Development & Testing</h3>
