@@ -161,9 +161,6 @@ const About = () => {
               </ul>
             </section>
 
-            {/* Ad Banner - Mid-content */}
-            <AdBanner />
-
             <section>
               <h2 className="text-2xl font-semibold text-gray-800 mb-3">Who Uses This Tool?</h2>
               <p>Our tool is used by:</p>
@@ -247,6 +244,84 @@ const About = () => {
                 <li><strong>Keys:</strong> Use descriptive, camelCase keys for clarity.</li>
                 <li><strong>Validation:</strong> Always validate JSON before production use.</li>
                 <li><strong>Size:</strong> For large datasets, consider pagination or streaming.</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-3">JSON in Modern Web Development</h2>
+              <p>
+                JSON has revolutionized how web applications communicate and exchange data. Its simplicity and flexibility make it 
+                the preferred choice for REST APIs, configuration management, and data storage. Unlike XML, JSON has minimal syntax 
+                overhead, making it faster to parse and easier to work with. Most modern programming languages have built-in support 
+                for JSON parsing and generation.
+              </p>
+              <p className="mt-3">
+                In web development, JSON is used for AJAX requests, localStorage data persistence, WebSocket communication, API responses, 
+                and configuration files. Popular frameworks like React, Angular, and Vue.js rely heavily on JSON for component configuration 
+                and state management. Understanding JSON is essential for any modern web developer.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-3">Privacy & Security</h2>
+              <p>
+                We take your privacy seriously. All JSON processing happens client-side in your browser using JavaScript. Your data 
+                never leaves your device and is never transmitted to our servers. This ensures complete privacy and security for 
+                sensitive information.
+              </p>
+              <p className="mt-2">
+                We use browser localStorage only to save your work for convenience - this data stays on your device and can be cleared 
+                at any time. For analytics and advertising, we use third-party services like Google AdSense, which may use cookies. 
+                You can review our full <a href="/privacy" className="text-indigo-600 hover:underline">Privacy Policy</a> for details.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-3">Community & Support</h2>
+              <p>
+                We're committed to providing the best free JSON formatting tool available. Our tool is continuously improved based 
+                on user feedback and emerging needs in the developer community. If you have suggestions for new features, encounter 
+                bugs, or need help using the tool, please visit our <a href="/contact" className="text-indigo-600 hover:underline">Contact page</a>.
+              </p>
+              <p className="mt-2">
+                We believe in making development tools accessible to everyone, which is why our tool is completely free with no 
+                registration required, no file size limits for reasonable use, and no restrictions on daily usage.
+              </p>
+            </section>
+
+            {/* Ad Banner - After substantial content */}
+            <div className="my-6">
+              <AdBanner />
+            </div>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-3">Advanced JSON Features Explained</h2>
+              
+              <h3 className="text-xl font-semibold text-gray-800 mb-2 mt-4">JSON Data Types</h3>
+              <p className="mb-2">JSON supports six basic data types:</p>
+              <ul className="list-disc list-inside ml-4 space-y-1 mb-4">
+                <li><strong>String:</strong> Text enclosed in double quotes (e.g., "hello")</li>
+                <li><strong>Number:</strong> Integer or floating-point numbers (e.g., 42, 3.14)</li>
+                <li><strong>Boolean:</strong> true or false values</li>
+                <li><strong>Array:</strong> Ordered lists enclosed in square brackets (e.g., [1, 2, 3])</li>
+                <li><strong>Object:</strong> Collections of key-value pairs in curly braces (e.g., {"{"}name: "John"{"}"})</li>
+                <li><strong>Null:</strong> Represents absence of value</li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-2 mt-4">JSON Schema Validation</h3>
+              <p className="mb-2">
+                JSON Schema is a vocabulary that allows you to annotate and validate JSON documents. While our tool provides syntax 
+                validation, JSON Schema goes further by defining the structure, required fields, data types, and constraints for your 
+                JSON data. This is crucial for API contracts and data validation in production systems.
+              </p>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-2 mt-4">Common JSON Errors & Solutions</h3>
+              <ul className="list-disc list-inside ml-4 space-y-2">
+                <li><strong>Trailing Comma:</strong> JSON doesn't allow commas after the last item in an array or object</li>
+                <li><strong>Single Quotes:</strong> JSON requires double quotes for strings, not single quotes</li>
+                <li><strong>Unquoted Keys:</strong> All object keys must be enclosed in double quotes</li>
+                <li><strong>Undefined Values:</strong> JSON doesn't support undefined; use null instead</li>
+                <li><strong>Comments:</strong> JSON specification doesn't allow comments (though some parsers accept them)</li>
               </ul>
             </section>
           </div>

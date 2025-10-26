@@ -211,6 +211,59 @@ const Contact = () => {
               </div>
             </div>
           </div>
+
+          {/* Additional Help Resources */}
+          <div className="mt-8 pt-8 border-t border-gray-200">
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">Need Help Using JSON Formatter?</h2>
+            <p className="text-gray-700 mb-4">
+              Before reaching out, you might find answers in our comprehensive documentation and guides:
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <h3 className="font-semibold text-blue-900 mb-2">User Guide</h3>
+                <p className="text-blue-800 text-sm">
+                  Visit our <a href="/about" className="underline hover:text-blue-600">About page</a> for detailed tutorials 
+                  on using all features, including formatting, validation, conversion, and comparison tools.
+                </p>
+              </div>
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <h3 className="font-semibold text-green-900 mb-2">FAQ Section</h3>
+                <p className="text-green-800 text-sm">
+                  Check our homepage FAQ section for answers to common questions about JSON syntax, formatting, 
+                  data security, and tool capabilities.
+                </p>
+              </div>
+              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                <h3 className="font-semibold text-purple-900 mb-2">JSON Resources</h3>
+                <p className="text-purple-800 text-sm">
+                  Learn more about JSON at <a href="https://www.json.org/" target="_blank" rel="noopener noreferrer" 
+                  className="underline hover:text-purple-600">JSON.org</a> and explore JSON examples on our About page.
+                </p>
+              </div>
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                <h3 className="font-semibold text-yellow-900 mb-2">Quick Tips</h3>
+                <p className="text-yellow-800 text-sm">
+                  Most issues can be resolved by checking for common errors: missing commas, unclosed brackets, 
+                  unquoted keys, or invalid data types.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Feedback & Suggestions */}
+          <div className="mt-8 pt-8 border-t border-gray-200">
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">We Value Your Feedback</h2>
+            <p className="text-gray-700 mb-4">
+              Your input helps us improve JSON Formatter & Validator. We're especially interested in:
+            </p>
+            <ul className="list-disc list-inside ml-4 space-y-2 text-gray-700">
+              <li><strong>Feature Requests:</strong> What additional functionality would make your work easier?</li>
+              <li><strong>User Experience:</strong> How can we improve the interface or workflow?</li>
+              <li><strong>Performance Issues:</strong> Are you experiencing slow processing or errors?</li>
+              <li><strong>Documentation:</strong> What topics need better explanation or examples?</li>
+              <li><strong>Browser Compatibility:</strong> Any issues with specific browsers or devices?</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

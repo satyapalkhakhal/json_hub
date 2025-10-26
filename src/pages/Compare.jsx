@@ -287,9 +287,6 @@ function Compare() {
           </div>
         )}
 
-        {/* Ad Banner - Between content and features */}
-        <AdBanner />
-
         {/* Features Info */}
         <div className="mt-8 bg-white rounded-lg shadow-md p-6">
           <h2 className="text-xl font-bold text-gray-800 mb-4">Features</h2>
@@ -335,6 +332,133 @@ function Compare() {
                 <h3 className="font-semibold text-gray-800">Statistics</h3>
                 <p className="text-sm text-gray-600">View count of changes, additions, deletions</p>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* How to Compare JSON Files - Educational Content */}
+        <div className="mt-8 bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">How to Compare JSON Files Online</h2>
+          <p className="text-gray-700 mb-4">
+            Comparing JSON files is essential in software development for identifying changes between versions, debugging API differences, 
+            testing data transformations, and reviewing configuration updates. Our JSON compare tool provides a comprehensive side-by-side 
+            comparison with detailed difference analysis.
+          </p>
+          <div className="space-y-4 mt-6">
+            <div className="flex items-start space-x-3">
+              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
+              <div>
+                <h3 className="font-semibold text-gray-800 mb-1">Paste or Upload Your JSON Files</h3>
+                <p className="text-sm text-gray-600">
+                  Paste your first JSON object in the left panel and your second JSON in the right panel. You can also upload JSON files 
+                  using the upload buttons. Both panels support file uploads for quick comparison.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-3">
+              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">2</div>
+              <div>
+                <h3 className="font-semibold text-gray-800 mb-1">Automatic Comparison</h3>
+                <p className="text-sm text-gray-600">
+                  As soon as you paste or upload both JSON files, our tool automatically compares them and highlights all differences. 
+                  The comparison happens instantly in your browser with no server processing required.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-3">
+              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">3</div>
+              <div>
+                <h3 className="font-semibold text-gray-800 mb-1">Review Differences</h3>
+                <p className="text-sm text-gray-600">
+                  Navigate through differences using the Previous/Next buttons. The tool shows you added properties (green), deleted properties 
+                  (red), and changed values (yellow) with detailed statistics and a comprehensive differences summary.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Use Cases for JSON Comparison */}
+        <div className="mt-8 bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Common Use Cases for JSON Comparison</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">API Version Comparison</h3>
+              <p className="text-sm text-gray-600">
+                When updating APIs, compare responses from different versions to ensure backward compatibility, identify breaking changes, 
+                verify new fields are added correctly, and document API evolution for your team and users.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Configuration Management</h3>
+              <p className="text-sm text-gray-600">
+                Compare configuration files between environments (dev, staging, production) to identify discrepancies, verify deployment 
+                settings, track configuration changes over time, and ensure consistency across environments.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Data Validation & Testing</h3>
+              <p className="text-sm text-gray-600">
+                Compare expected vs actual test results, validate data transformations in ETL pipelines, verify database exports match 
+                specifications, and ensure data integrity after migrations or updates.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Code Review & Version Control</h3>
+              <p className="text-sm text-gray-600">
+                Review JSON changes in pull requests, compare current state with previous versions, identify unintended changes in data 
+                structures, and understand the impact of JSON schema modifications.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Ad Banner - After substantial content */}
+        <AdBanner />
+
+        {/* JSON Diff FAQ */}
+        <div className="mt-8 bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">JSON Compare FAQ</h2>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">What does JSON diff mean?</h3>
+              <p className="text-gray-600 text-sm">
+                JSON diff (difference) is the process of comparing two JSON objects to identify what has changed between them. It shows 
+                additions (new properties), deletions (removed properties), and modifications (changed values). Our tool provides a 
+                detailed diff report that makes it easy to understand exactly what changed between two JSON documents.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Can I compare JSON with different structures?</h3>
+              <p className="text-gray-600 text-sm">
+                Yes! Our tool can compare JSON objects with completely different structures. It will identify all added and removed 
+                properties, even if the overall structure has changed significantly. This is useful for comparing API responses across 
+                major version changes or when data schemas evolve.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">How does the swap feature work?</h3>
+              <p className="text-gray-600 text-sm">
+                The Swap button instantly exchanges the left and right JSON objects. This is helpful when you want to view differences 
+                from a different perspective or when you accidentally pasted your JSON in the wrong panels. Simply click Swap and the 
+                content switches sides instantly.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">What do the different colors mean?</h3>
+              <p className="text-gray-600 text-sm">
+                Green indicates additions (properties that exist in the right JSON but not in the left), red shows deletions (properties 
+                that exist in the left JSON but not in the right), and yellow highlights changes (properties that exist in both but have 
+                different values). This color coding makes it easy to quickly identify the type of each difference.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Can I compare very large JSON files?</h3>
+              <p className="text-gray-600 text-sm">
+                Yes, but performance depends on file size and your device capabilities. For files up to 5MB, comparison is typically instant. 
+                Larger files may take a few seconds to process. Since everything runs in your browser, ensure you have sufficient memory 
+                available for very large comparisons.
+              </p>
             </div>
           </div>
         </div>

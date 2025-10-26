@@ -148,6 +148,110 @@ const Terms = () => {
                 <Link to="/contact" className="text-indigo-600 hover:underline">Contact page</Link>.
               </p>
             </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-3">Service Availability</h2>
+              <p>
+                While we strive to provide uninterrupted service, we do not guarantee that our Service will be available at all times. 
+                The Service may be temporarily unavailable due to:
+              </p>
+              <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                <li>Scheduled maintenance and updates</li>
+                <li>Technical issues or server problems</li>
+                <li>Circumstances beyond our reasonable control</li>
+                <li>Security incidents requiring immediate action</li>
+              </ul>
+              <p className="mt-2">
+                We reserve the right to modify, suspend, or discontinue any aspect of the Service at any time without prior notice.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-3">User Responsibilities</h2>
+              <p>
+                When using our JSON Formatter & Validator, you are responsible for:
+              </p>
+              <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                <li><strong>Data Accuracy:</strong> Ensuring the JSON data you process is accurate and you have rights to use it</li>
+                <li><strong>Legal Compliance:</strong> Complying with all applicable laws and regulations in your jurisdiction</li>
+                <li><strong>Security:</strong> Maintaining the security of your device and browser</li>
+                <li><strong>Reasonable Use:</strong> Using the Service in a fair and reasonable manner</li>
+                <li><strong>Error Checking:</strong> Verifying the output of our tools before using it in production environments</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-3">No Warranty for Results</h2>
+              <p>
+                While our tool strives for accuracy, we do not warrant that:
+              </p>
+              <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                <li>The Service will meet your specific requirements</li>
+                <li>The Service will be error-free or completely bug-free</li>
+                <li>Any errors or defects will be corrected</li>
+                <li>The results obtained from using the Service will be accurate or reliable</li>
+              </ul>
+              <p className="mt-2">
+                You use the Service at your own risk and should always verify critical output before using it in production systems.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-3">Indemnification</h2>
+              <p>
+                You agree to indemnify, defend, and hold harmless JSON Formatter & Validator, its owners, operators, and affiliates 
+                from any claims, damages, losses, liabilities, and expenses (including legal fees) arising from:
+              </p>
+              <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                <li>Your use or misuse of the Service</li>
+                <li>Your violation of these Terms</li>
+                <li>Your violation of any rights of third parties</li>
+                <li>Any data you submit or process through the Service</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-3">Dispute Resolution</h2>
+              <p>
+                If you have any concerns or disputes about the Service, we encourage you to first contact us through our{' '}
+                <a href="/contact" className="text-indigo-600 hover:underline">Contact page</a> to seek resolution informally. 
+                We are committed to working with users to resolve issues fairly and promptly.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-3">Severability</h2>
+              <p>
+                If any provision of these Terms is found to be unenforceable or invalid under applicable law, such provision 
+                shall be limited or eliminated to the minimum extent necessary, and the remaining provisions shall continue in 
+                full force and effect.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-3">Entire Agreement</h2>
+              <p>
+                These Terms of Service, together with our Privacy Policy, constitute the entire agreement between you and 
+                JSON Formatter & Validator regarding the use of our Service, superseding any prior agreements or understandings.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-3">Fair Use Policy</h2>
+              <p>
+                Our Service is provided free of charge for reasonable personal and commercial use. We define reasonable use as:
+              </p>
+              <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                <li>Normal human usage patterns (not automated bulk processing)</li>
+                <li>Individual file sizes under 100MB</li>
+                <li>Using the tool for its intended purpose</li>
+                <li>Not attempting to reverse engineer or copy the Service</li>
+              </ul>
+              <p className="mt-2">
+                We reserve the right to limit access for users who abuse the Service or use it in ways that negatively 
+                impact other users' experience.
+              </p>
+            </section>
           </div>
         </div>
       </div>
